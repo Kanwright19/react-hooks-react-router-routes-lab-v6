@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import Home from "./Home";
 
 function Movie() {
-  const [movie, setMovie] = useState({})
+  const [movie, setMovie] = useState([])
   const params = useParams();
   const movieId = params.id
 
@@ -13,6 +13,7 @@ function Movie() {
     fetch(`http://localhost:4000/movies/${movieId}`)
     .then(response => response.json())
     .then(data => setMovie(data))
+
     .catch(error => console.error(error))
   }, [movieId])
 
@@ -25,7 +26,6 @@ function Movie() {
   return (
     <>
       <header>
-        <Home/>
         <NavBar />
       </header>
       <main>
